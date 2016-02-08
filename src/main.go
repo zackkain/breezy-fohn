@@ -1,8 +1,8 @@
-package hello
+package main
 
 import (
-    "fmt"
     "net/http"
+    "html/template"
 )
 
 func init() {
@@ -10,5 +10,7 @@ func init() {
 }
 
 func handler(w http.ResponseWriter, r *http.Request) {
-    fmt.Fprint(w, "Hello, world!")
+    t := template.New("Index")
+    t, _ = t.ParseFiles("tmpl/index.html")
+    t.Execute(w, nil)
 }
