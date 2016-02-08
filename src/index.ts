@@ -1,6 +1,4 @@
-class App {
-    public static main() : number {
-        console.log("Hello World");
-        return 0;
-    }
-}
+import {bootstrap} from 'angular2/platform/browser'
+import {AppComponent} from 'components/people.ts'
+
+bootstrap(AppComponent)
