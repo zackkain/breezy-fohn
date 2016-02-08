@@ -2,7 +2,7 @@
   "project_name": "Breezy Föhn",
   "project_description": "My Webpage",
   "show_files": [
-    "hello/hello.go",
+    "src/main.go",
     "app.yaml"
   ]
 }

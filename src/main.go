@@ -2,15 +2,13 @@ package main
 
 import (
     "net/http"
-    "html/template"
 )
 
 func init() {
-    http.HandleFunc("/", handler)
+    http.Handle("/", http.FileServer(http.Dir("./tmpl")))
+    http.HandleFunc("/bin/", binHandler)
 }
 
-func handler(w http.ResponseWriter, r *http.Request) {
-    t := template.New("Index")
-    t, _ = t.ParseFiles("tmpl/index.html")
-    t.Execute(w, nil)
+func binHandler(w http.ResponseWriter, r *http.Request) {
+    http.ServeFile(w, r, r.URL.Path[1:])
 }
