@@ -3,35 +3,11 @@
     <head>
         <title>Breezy Föhn</title>    
         <link rel="icon" href="/bin/images/favicon.ico" type="image/x-icon">
+        <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
     </head>
     
     <body>
-        <people></people>
-        
-            <!-- IE required polyfills, in this exact order -->
-    <script src="node_modules/es6-shim/es6-shim.min.js"></script>
-    <script src="node_modules/systemjs/dist/system-polyfills.js"></script>
-
-    <script src="node_modules/angular2/bundles/angular2-polyfills.js"></script>
-    <script src="node_modules/systemjs/dist/system.src.js"></script>
-    <script src="node_modules/rxjs/bundles/Rx.js"></script>
-    <script src="node_modules/angular2/bundles/angular2.dev.js"></script>
-        
-        <script src="/bin/components/people.js" type="text/javascript"></script>
-        <script src="/bin/index.js" type="text/javascript"> </script>
-        
-        <script>
-        System.config({
-            packages: {        
-            app: {
-                format: 'register',
-                defaultExtension: 'js'
-            }
-            }
-        });
-        System.import('app/main')
-                .then(null, console.error.bind(console));
-        </script>
-        
+        <div id="container"></div>
+        <script src="/bin/bundle.js" type="text/javascript"></script>
     </body>
 </html>

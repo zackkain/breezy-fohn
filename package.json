@@ -2,25 +2,19 @@
     "name": "breezy-fohn",
     "version": "1.0.0",
     "scripts": {
-        "tsc": "tsc",
-        "tsc:w": "tsc -w",
-        "lite": "lite-server",
-        "start": "concurrent \"npm run tsc:w\" \"npm run lite\" "
+        "tsc": "tsc"
     },
     "license": "ISC",
     "dependencies": {
-        "angular2": "2.0.0-beta.3",
-        "systemjs": "0.19.6",
-        "es6-promise": "^3.0.2",
-        "es6-shim": "^0.33.3",
-        "reflect-metadata": "0.1.2",
-        "rxjs": "5.0.0-beta.0",
-        "zone.js": "0.5.11",
-        "material2": "https://github.com/angular/material2.git"
+        
     },
     "devDependencies": {
-        "concurrently": "^1.0.0",
-        "lite-server": "^2.0.1",
-        "typescript": "^1.7.5"
+        "react": "~0.14.7",
+        "react-dom": "~0.14.7",
+        "react-tap-event-plugin": "~0.2.2",
+        "webpack": "~1.12.14",
+        "material-ui": "~0.14.4",
+        "typescript": "^1.8.2",
+        "ts-loader":"~0.8.1"
     }
 }

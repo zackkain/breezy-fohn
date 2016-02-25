@@ -1,16 +1,9 @@
-System.register(['angular2/platform/browser', 'components/people.ts'], function(exports_1) {
-    var browser_1, people_ts_1;
-    return {
-        setters:[
-            function (browser_1_1) {
-                browser_1 = browser_1_1;
-            },
-            function (people_ts_1_1) {
-                people_ts_1 = people_ts_1_1;
-            }],
-        execute: function() {
-            browser_1.bootstrap(people_ts_1.AppComponent);
-        }
-    }
-});
+"use strict";
+var React = require("react");
+var ReactDOM = require("react-dom");
+var injectTapEventPlugin = require("react-tap-event-plugin");
+var app_tsx_1 = require("./components/app.tsx");
+injectTapEventPlugin();
+var app = React.createElement(app_tsx_1.App, null);
+ReactDOM.render(app, document.getElementById("container"));
 //# sourceMappingURL=index.js.map

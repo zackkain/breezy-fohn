@@ -6,10 +6,11 @@ import (
 
 func init() {
     http.Handle("/", http.FileServer(http.Dir("./tmpl")))
-    http.HandleFunc("/bin/", binHandler)
-    http.HandleFunc("/node_modules/", binHandler)
+    http.HandleFunc("/bin/", staticHandler)
+    http.HandleFunc("/src/", staticHandler)
+    http.HandleFunc("/node_modules/", staticHandler)
 }
 
-func binHandler(w http.ResponseWriter, r *http.Request) {
+func staticHandler(w http.ResponseWriter, r *http.Request) {
     http.ServeFile(w, r, r.URL.Path[1:])
 }
