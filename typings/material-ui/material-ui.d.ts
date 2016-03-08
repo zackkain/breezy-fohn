@@ -573,6 +573,7 @@ declare namespace __MaterialUI {
             onKeyboardFocus?: React.FocusEventHandler;
             onNestedListToggle?: (item: ListItem) => void;
             onClick?: React.MouseEventHandler;
+            onTouchTap?: React.ReactEventHandler;
             rightAvatar?: React.ReactElement<any>;
             rightIcon?: React.ReactElement<any>;
             rightIconButton?: React.ReactElement<any>;
@@ -1523,7 +1524,7 @@ declare namespace __MaterialUI {
             style?: React.CSSProperties;
 
             onEscKeyDown?: React.KeyboardEventHandler;
-            onItemTouchTap?: (e: TouchTapEvent, item: React.ReactElement<any>) => void;
+            onTouchTap?: (e: TouchTapEvent, item: React.ReactElement<any>) => void;
             onChange?: (e: React.FormEvent, value: string) => void;
         }
         export class MenuItem extends React.Component<MenuItemProps, {}>{

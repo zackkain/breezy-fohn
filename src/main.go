@@ -5,7 +5,8 @@ import (
 )
 
 func init() {
-    http.Handle("/", http.FileServer(http.Dir("./tmpl")))
+    fs := http.FileServer(http.Dir("./tmpl"))
+    http.Handle("/", fs)
     http.HandleFunc("/bin/", staticHandler)
     http.HandleFunc("/src/", staticHandler)
     http.HandleFunc("/node_modules/", staticHandler)

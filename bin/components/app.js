@@ -1,43 +1,52 @@
 "use strict";
-var __extends = (this && this.__extends) || function (d, b) {
-    for (var p in b) if (b.hasOwnProperty(p)) d[p] = b[p];
-    function __() { this.constructor = d; }
-    d.prototype = b === null ? Object.create(b) : (__.prototype = b.prototype, new __());
-};
-var React = require("react");
-var IconButton = require("material-ui/lib/icon-button");
-var NavigationClose = require("material-ui/lib/svg-icons/navigation/close");
-var LeftNav = require("material-ui/lib/left-nav");
-var MenuItem = require("material-ui/lib/menus/menu-item");
-var AppBar = require("material-ui/lib/app-bar");
-var App = (function (_super) {
-    __extends(App, _super);
+const React = require("react");
+const react_router_1 = require("react-router");
+const IconButton = require("material-ui/lib/icon-button");
+const FontIcon = require("material-ui/lib/font-icon");
+const LeftNav = require("material-ui/lib/left-nav");
+const MenuItem = require("material-ui/lib/menus/menu-item");
+const AppBar = require("material-ui/lib/app-bar");
+const auth = require('../modules/auth');
+class Component extends React.Component {
     /**
      *
      */
-    function App(props) {
-        var _this = this;
-        _super.call(this, props);
-        this.handleToggle = function () {
-            return _this.setState({ open: !_this.state.open });
-        };
-        this.state = { open: false };
+    constructor(props) {
+        super(props);
+        this.handleToggle = () => this.setState({ loggedIn: this.state.loggedIn, open: !this.state.open });
+        this.state = { loggedIn: auth.loggedIn(), open: false };
     }
-    App.prototype.render = function () {
+    updateAuth(loggedIn) {
+        this.setState({ loggedIn: loggedIn, open: this.state.open });
+    }
+    componentWillMount() {
+        auth.onChange = this.updateAuth.bind(this);
+        auth.login(null, null);
+    }
+    handleNavigateToLogin(event, item) {
+        react_router_1.browserHistory.push("/login");
+        this.close();
+    }
+    handleNavigationToLogout(event, item) {
+        react_router_1.browserHistory.push("/logout");
+        this.close();
+    }
+    close() {
+        this.setState({ loggedIn: this.state.loggedIn, open: false });
+    }
+    render() {
         return (React.createElement("div", null, 
             React.createElement(AppBar, {title: "Breezy Föhn", onLeftIconButtonTouchTap: this.handleToggle}), 
             React.createElement(LeftNav, {open: this.state.open}, 
-                React.createElement(AppBar, {title: "Menu", showMenuIconButton: false, iconElementRight: React.createElement(IconButton, null, 
-                    React.createElement(NavigationClose, null)
+                React.createElement(AppBar, {title: "Menu", showMenuIconButton: false, iconElementRight: React.createElement(IconButton, {onTouchTap: this.handleToggle}, 
+                    React.createElement(FontIcon, {className: "material-icons"}, "close")
                 )}), 
-                React.createElement(MenuItem, null, "Living Room"), 
-                React.createElement(MenuItem, null, "Kitchen"), 
-                React.createElement(MenuItem, null, "Master Bedroom"), 
-                React.createElement(MenuItem, null, "Master Bathroom"), 
-                React.createElement(MenuItem, null, "Guest Bedroom"), 
-                React.createElement(MenuItem, null, "Guest Bath"))));
-    };
-    return App;
-}(React.Component));
-exports.App = App;
+                React.createElement(MenuItem, {onTouchTap: this.handleNavigateToLogin.bind(this)}, "Sign In"), 
+                React.createElement(MenuItem, {onTouchTap: this.handleNavigationToLogout.bind(this)}, "Log Out"))));
+    }
+}
+Component.contextTypes = {
+    router: React.PropTypes.object.isRequired
+};
+exports.Component = Component;
 //# sourceMappingURL=app.js.map
