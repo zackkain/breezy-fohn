@@ -1,5 +1,4 @@
-application: breezy-fohn
-version: 1
+version: 2
 runtime: go112
 api_version: go1
 
