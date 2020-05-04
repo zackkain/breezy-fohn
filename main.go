@@ -4,7 +4,7 @@ import (
     "net/http"
 )
 
-func init() {
+func main() {
     fs := http.FileServer(http.Dir("./tmpl"))
     http.Handle("/", fs)
     http.HandleFunc("/bin/", staticHandler)
